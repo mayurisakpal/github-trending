@@ -69,7 +69,7 @@ export default function DateRangeOptions(props) {
       <Dialog
         isOpen={timespanDialog}
         title="Adjust time span"
-        height={["100vh", "144px"]}
+        height={["100vh", "176px"]}
         handleCloseClick={handleCloseClick}
       >
         <Box as="ul" bg="white">

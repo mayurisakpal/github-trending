@@ -1,8 +1,47 @@
+@font-face {
+  font-family: "Segoe UI Web";
+  src: url("./fonts/segoeui-light.woff2") format("woff2"),
+    url("./fonts/segoeui-light.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe UI Web";
+  src: url("./fonts/segoeui-semilight.woff2") format("woff2"),
+    url("./fonts/segoeui-semilight.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe UI Web";
+  src: url("./fonts/segoeui-regular.woff2") format("woff2"),
+    url("./fonts/segoeui-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe UI Web";
+  src: url("./fonts/segoeui-semibold.woff2") format("woff2"),
+    url("./fonts/segoeui-semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Segoe UI Web";
+  src: url("./fonts/segoeui-bold.woff2") format("woff2"),
+    url("./fonts/segoeui-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Segoe UI Web", sans-serif;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -90,16 +129,12 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: "Segoe UI Web", sans-serif;
   vertical-align: baseline;
 }
 
 :focus {
   outline: 0;
-}
-
-body {
-  line-height: 1;
 }
 
 ol,

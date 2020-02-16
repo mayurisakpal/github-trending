@@ -80,7 +80,13 @@ function App() {
     githubRepos()
       .then(results => {
         setTotalCount(results.total_count);
-        setData(prevState => [...prevState, ...results.items]);
+        setData(prevState => {
+          if (!programmingLanguage && pageNumber === 1) {
+            return results.items;
+          } else {
+            return [...prevState, ...results.items];
+          }
+        });
         setFetchStatus(false);
       })
       .catch(error => {
@@ -167,7 +173,7 @@ function App() {
             textAlign="center"
             borderY="1px solid #e1e4e8"
           >
-            <Box as="h1" fontSize="40px" fontWeight="500">
+            <Box as="h1" fontSize="40px" fontWeight="600">
               Trending
             </Box>
             <p>See what the GitHub community is most excited about today.</p>
@@ -196,7 +202,7 @@ function App() {
                 backgroundColor="#f6f8fa"
                 justifyContent="space-between"
               >
-                <Flex color="#24292e" fontSize="14px" fontWeight="600">
+                <Flex color="#24292e" fontSize="16px" fontWeight="600">
                   Repositories
                 </Flex>
                 <Flex
@@ -241,7 +247,7 @@ function App() {
                         for <strong>{programmingLanguage}</strong>.
                       </Box>
                       <Box as="p" mt="16px">
-                        If you create an <strong>{programmingLanguage}</strong>
+                        If you create an <strong>{programmingLanguage}</strong>{" "}
                         repository, you can really own the place.
                       </Box>
                       <Box as="p" mt="16px" mb="26px">

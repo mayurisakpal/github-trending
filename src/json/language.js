@@ -218,7 +218,6 @@ export const LanguagesData = [
   "Java",
   "Java Properties",
   "Java Server Pages",
-  "JavaScript",
   "JavaScript+ERB",
   "JFlex",
   "Jison",

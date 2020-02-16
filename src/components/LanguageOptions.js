@@ -28,12 +28,30 @@ const Input = styled.input`
   display: block;
   width: 100%;
   max-width: 100%;
-  padding: 5px;
+  padding: 8px;
   border: 1px solid #dfe2e5;
   border-radius: 3px;
+  font-size: 14px;
   outline: none;
   box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075);
   box-sizing: border-box;
+
+  ::-webkit-input-placeholder {
+    /* Edge */
+    color: #a3aab1;
+    opacity: 0.54;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #a3aab1;
+    opacity: 0.54;
+  }
+
+  ::placeholder {
+    color: #a3aab1;
+    opacity: 0.54;
+  }
 `;
 
 const OptionWrapper = styled(Flex)`
@@ -87,16 +105,24 @@ export default function LangauageOptions(props) {
       </OptionWrapper>
       <Dialog
         isOpen={languageDialog}
-        bg="#f6f8fa"
         handleCloseClick={handleCloseClick}
+        maxHeight={["100vh", "400px"]}
       >
         <Box p="10px" borderY="1px solid #dfe2e5">
           <Input
             onChange={handleLanguageInputChange}
             value={programmingLanguageInput}
+            placeholder="Filter Languages"
+            type="text"
           />
         </Box>
-        <Box as="ul" bg="white" overflowY="auto" height="100%">
+        <Box
+          as="ul"
+          bg="white"
+          overflowY="auto"
+          height="100%"
+          maxHeight="310px"
+        >
           {(programmingLanguage !== "Any" || programmingLanguageInput) && (
             <CursorPointer
               display="flex"
@@ -107,7 +133,7 @@ export default function LangauageOptions(props) {
               borderBottom="1px solid #eaecef"
               onClick={handleLanguageReset}
             >
-              <Position position="absolute" left="15px">
+              <Position position="absolute" left="15px" fontSize="0px">
                 <svg
                   aria-label="x"
                   height="16"

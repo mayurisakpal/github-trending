@@ -28,7 +28,7 @@ const propTypes = {
 function RepositoriesList(props) {
   const { data } = props;
   return (
-    <ul id="articleList">
+    <ul>
       {data.length > 0 &&
         data.map((item, index) => {
           const {
@@ -126,6 +126,7 @@ function RepositoriesList(props) {
                     )}
                     {forks_count > 0 && (
                       <Anchor
+                        alignItems="center"
                         as="a"
                         href={`${html_url}/network/members`}
                         target="_blank"
