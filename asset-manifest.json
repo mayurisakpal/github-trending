@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/github-trending/static/css/main.c0e26233.chunk.css",
+    "main.js": "/github-trending/static/js/main.0f38ebdb.chunk.js",
+    "main.js.map": "/github-trending/static/js/main.0f38ebdb.chunk.js.map",
+    "runtime-main.js": "/github-trending/static/js/runtime-main.7f6026d7.js",
+    "runtime-main.js.map": "/github-trending/static/js/runtime-main.7f6026d7.js.map",
+    "static/js/2.9e25b4b3.chunk.js": "/github-trending/static/js/2.9e25b4b3.chunk.js",
+    "static/js/2.9e25b4b3.chunk.js.map": "/github-trending/static/js/2.9e25b4b3.chunk.js.map",
+    "index.html": "/github-trending/index.html",
+    "precache-manifest.e6f32f8f921e329b29fce9b235794949.js": "/github-trending/precache-manifest.e6f32f8f921e329b29fce9b235794949.js",
+    "service-worker.js": "/github-trending/service-worker.js",
+    "static/css/main.c0e26233.chunk.css.map": "/github-trending/static/css/main.c0e26233.chunk.css.map",
+    "static/js/2.9e25b4b3.chunk.js.LICENSE": "/github-trending/static/js/2.9e25b4b3.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f6026d7.js",
+    "static/js/2.9e25b4b3.chunk.js",
+    "static/css/main.c0e26233.chunk.css",
+    "static/js/main.0f38ebdb.chunk.js"
+  ]
+}
