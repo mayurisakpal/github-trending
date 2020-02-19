@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { debounce } from "debounce";
 import { ThemeProvider } from "styled-components";
 import { Box } from "./styledComponents/Box";
 import { Flex } from "./styledComponents/Flex";
@@ -62,11 +61,13 @@ function App() {
   const dateRangeDialogRef = useRef(null);
 
   const githubRepos = () => {
-    const fetchurl = `https://api.github.com/search/repositories?q=language:${programmingLanguage ||
-      ""}${
-      timespan && createTimespan(timespan)
-        ? `+created:${createTimespan(timespan)}`
-        : "&nbsp;"
+    const hasTimeSpan = timespan && createTimespan(timespan);
+    const fetchurl = `https://api.github.com/search/repositories?q=${
+      !programmingLanguage && hasTimeSpan
+        ? ""
+        : `language:${programmingLanguage || "&nbsp;"}`
+    }${
+      hasTimeSpan ? `+created:${createTimespan(timespan)}` : "&nbsp;"
     }&sort=stars&order=desc&page=${pageNumber}&per_page=15`;
     return fetch(fetchurl)
       .then(data => data.json())
@@ -81,10 +82,15 @@ function App() {
       .then(results => {
         setTotalCount(results.total_count);
         setData(prevState => {
-          if (!programmingLanguage && pageNumber === 1) {
-            return results.items;
+          if (results.items) {
+            if (!programmingLanguage && pageNumber === 1) {
+              return results.items;
+            } else {
+              return [...prevState, ...results.items];
+            }
           } else {
-            return [...prevState, ...results.items];
+            console.warn("Api rate limit exceeded");
+            return [];
           }
         });
         setFetchStatus(false);
@@ -154,7 +160,10 @@ function App() {
 
   const timespanData = ["Daily", "Weekly", "Monthly", "Yearly"];
 
-  const handleLoadMore = () => setPageNumber(prevState => ++prevState);
+  const handleLoadMore = () => {
+    setFetchStatus(true);
+    setPageNumber(prevState => ++prevState);
+  };
 
   const dataLength = data.length;
   return (
@@ -232,7 +241,7 @@ function App() {
                 </Flex>
               </Flex>
               <RepositoriesList data={data} />
-              <Box textAlign="center">
+              <Box textAlign="center" px="16px">
                 {fetchStatus ? (
                   <Loader my="26px" />
                 ) : error ? (
@@ -264,7 +273,7 @@ function App() {
                 !error &&
                 dataLength > 0 &&
                 dataLength !== totalCount && (
-                  <Button mx="auto" onClick={debounce(handleLoadMore, 3000)}>
+                  <Button mx="auto" onClick={handleLoadMore}>
                     Load more
                   </Button>
                 )}
